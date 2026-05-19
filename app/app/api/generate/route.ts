@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { groq } from '@/lib/groq'
+import { getGroqClient } from '@/lib/groq'
 import type { GenerateRequest, StudyOutput } from '@/types'
+
+export const dynamic = 'force-dynamic'
 
 const MAX_TEXT_LENGTH = 5000
 
@@ -69,7 +71,7 @@ TEXT TO STUDY:
 ${trimmedText}`
 
   try {
-    const completion = await groq.chat.completions.create({
+    const completion = await getGroqClient().chat.completions.create({
       model: 'llama-3.1-8b-instant',
       temperature: 0.3,
       max_tokens: 4096,
