@@ -33,6 +33,7 @@ Thumbs.db
 
 # Claude Code project settings
 .claude/
+CLAUDE.md
 
 # Editor
 .vscode/
